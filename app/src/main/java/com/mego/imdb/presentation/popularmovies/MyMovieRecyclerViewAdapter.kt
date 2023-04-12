@@ -8,6 +8,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.mego.imdb.R
 import com.mego.imdb.databinding.FragmentPopularMoviesItemBinding
 import com.mego.imdb.domain.Movie
+import com.mego.imdb.presentation.movieDetails.MovieDetailsDialogFragment
 
 
 class MyMovieRecyclerViewAdapter( private val values: List<Movie>, private val mFragment: PopularMoviesFragment)
@@ -35,6 +36,10 @@ class MyMovieRecyclerViewAdapter( private val values: List<Movie>, private val m
         holder.binding.title.text = item.title
 
         holder.binding.year.text = item.year.toString()
+
+        holder.itemView.setOnClickListener {
+            MovieDetailsDialogFragment.newInstance(item).show(mFragment.parentFragmentManager, MovieDetailsDialogFragment.TAG)
+        }
 
     }
 

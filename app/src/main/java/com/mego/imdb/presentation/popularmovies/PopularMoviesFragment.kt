@@ -18,7 +18,7 @@ class PopularMoviesFragment : Fragment() {
 
     private val viewModel: PopularMoviesViewModel by viewModel()
 
-    private val mValues = ArrayList<Movie>();
+    private val mValues = ArrayList<Movie>()
 
     private val binding : FragmentPopularMoviesListBinding by lazy {
         FragmentPopularMoviesListBinding.inflate(layoutInflater)
@@ -28,7 +28,7 @@ class PopularMoviesFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         mValues.clear()
         mValues.addAll ( viewModel.popularMoviesLiveData.value!! )
 

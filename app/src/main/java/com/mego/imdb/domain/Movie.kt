@@ -1,10 +1,8 @@
 package com.mego.imdb.domain
 
 import androidx.room.Entity
-import androidx.room.Fts4
 import androidx.room.PrimaryKey
-import androidx.room.TypeConverters
-import com.google.gson.annotations.JsonAdapter
+import java.io.Serializable
 
 @Entity
 data class Movie(
@@ -13,7 +11,7 @@ data class Movie(
     var year : Int?,
     var title : String,
     var image : Poster
-) {
+) : Serializable {
     override fun toString(): String {
         return title
     }

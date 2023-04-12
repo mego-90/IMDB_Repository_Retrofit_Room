@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.textfield.TextInputLayout
 import com.mego.imdb.R
 import com.mego.imdb.domain.Movie
+import com.mego.imdb.presentation.movieDetails.MovieDetailsDialogFragment
 import org.koin.android.ext.android.inject
 
 class AutocompleteFragment : Fragment() {
@@ -37,6 +38,11 @@ class AutocompleteFragment : Fragment() {
         autocompleteET.doAfterTextChanged {
             viewModel.updateAutocompleteList(it.toString())
         }
+        autocompleteET.setOnItemClickListener { adapterView, view, position, l ->
+            val selectedMovie = adapterView.getItemAtPosition(position) as Movie
+            MovieDetailsDialogFragment.newInstance(selectedMovie).show(parentFragmentManager,MovieDetailsDialogFragment.TAG)
+        }
+
         return v
     }
 }
